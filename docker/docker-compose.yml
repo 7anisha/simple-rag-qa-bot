@@ -1,0 +1,15 @@
+# docker/docker-compose.yml
+version: "3.8"
+services:
+  rag-ui:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: rag_streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ..:/app
+    restart: unless-stopped
